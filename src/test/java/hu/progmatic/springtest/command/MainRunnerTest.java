@@ -31,6 +31,6 @@ class MainRunnerTest {
         };
 
         MainRunner mainRunner = new MainRunner(expenditureSummarizer);
-        mainRunner.run("param1", "param2");
+        mainRunner.run();
     }
 }
