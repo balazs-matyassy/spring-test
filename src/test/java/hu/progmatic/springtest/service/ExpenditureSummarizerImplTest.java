@@ -61,12 +61,15 @@ class ExpenditureSummarizerImplTest {
 
         double sum = expenditureSummarizer.getExpenditureSum(Currency.HUF);
 
-        assertEquals(150000.0, sum);
+        // jUnit 5 assert-ek
+        // assertTrue(true);
+        // assertFalse(false);
+        // assertEquals(150000.0, sum);
 
         // Hamcrest
         // https://www.baeldung.com/java-junit-hamcrest-guide
         // https://www.swtestacademy.com/hamcrest-matchers/
 
-        // assertThat(sum, is(equalTo(100000.0)));
+        assertThat(sum, is(equalTo(100000.0)));
     }
 }
