@@ -46,6 +46,22 @@ class ExpenditureSummarizerImplTest {
         double sum = expenditureSummarizer.getExpenditureSum(Currency.HUF);
 
         assertEquals(100000.0, sum);
+    }
+
+    @Test
+    void getExpenditureSum2() {
+        ExpenditureStorage expenditureStorage = new ExpenditureStorageTestImpl();
+
+        CurrencyConverter currencyConverter = new CurrencyConverterTestImpl();
+
+        ExpenditureSummarizer expenditureSummarizer = new ExpenditureSummarizerImpl(
+                expenditureStorage,
+                currencyConverter
+        );
+
+        double sum = expenditureSummarizer.getExpenditureSum(Currency.HUF);
+
+        assertEquals(150000.0, sum);
 
         // Hamcrest
         // https://www.baeldung.com/java-junit-hamcrest-guide
