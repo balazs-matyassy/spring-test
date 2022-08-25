@@ -7,19 +7,25 @@ import hu.progmatic.springtest.model.Expenditure;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface ExpenditureSummarizer {
-    double getExpenditureSum(List<Expenditure> expenditures, Currency currency);
+public class ExpenditureSummarizerImpl implements ExpenditureSummarizer {
+    public double getExpenditureSum(List<Expenditure> expenditures, Currency currency) {
+        return 0.0;
+    }
 
-    double getExpenditureSum(
+    public double getExpenditureSum(
             List<Expenditure> expenditures,
             Currency currency,
             Category category
-    );
+    ) {
+        return 0.0;
+    }
 
-    double getExpenditureSum(
+    public double getExpenditureSum(
             List<Expenditure> expenditures,
             Currency currency,
             LocalDate dateFrom,
             LocalDate dateTo
-    );
+    ) {
+        return 0.0;
+    }
 }
