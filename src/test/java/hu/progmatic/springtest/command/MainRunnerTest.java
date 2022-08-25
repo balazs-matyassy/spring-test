@@ -52,6 +52,7 @@ class MainRunnerTest {
 
     @Test
     void run2() throws Exception {
+        // https://www.baeldung.com/mockito-series
         when(expenditureSummarizerMock.getExpenditureSum(Currency.HUF))
                 .thenReturn(150000.0);
         mainRunner.run();
