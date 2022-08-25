@@ -8,12 +8,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class ExpenditureSummarizerImpl implements ExpenditureSummarizer {
-    public double getExpenditureSum(List<Expenditure> expenditures, Currency currency) {
+    public double getExpenditureSum(Currency currency) {
         return 0.0;
     }
 
     public double getExpenditureSum(
-            List<Expenditure> expenditures,
             Currency currency,
             Category category
     ) {
@@ -21,7 +20,6 @@ public class ExpenditureSummarizerImpl implements ExpenditureSummarizer {
     }
 
     public double getExpenditureSum(
-            List<Expenditure> expenditures,
             Currency currency,
             LocalDate dateFrom,
             LocalDate dateTo
