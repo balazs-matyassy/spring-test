@@ -57,4 +57,27 @@ class MainRunnerTest {
                 .thenReturn(150000.0);
         mainRunner.run();
     }
+
+    @Test
+    void run3() throws Exception {
+        // Minden tesztesetnél újra be kell állítani a metódusokat.
+        when(expenditureSummarizerMock.getExpenditureSum(Currency.HUF))
+                .thenReturn(150000.0);
+        when(expenditureSummarizerMock.getExpenditureSum(Currency.EUR))
+                .thenReturn(300.0);
+
+        // Természetesen továbbra is lehetőség van a konstruktoron keresztül átadni a mock objektumokat
+        // függőségként. :)
+        // Az @InjectMocks annotáció könnyebbé teszi az életünket,
+        // illetve működésre jobban hasonlít a springre.
+        MainRunner mainRunner = new MainRunner(expenditureSummarizerMock);
+
+        mainRunner.run();
+
+        // Közvetlenül is "használható" a mock objektum,
+        System.out.println(expenditureSummarizerMock.getExpenditureSum(Currency.HUF));
+        System.out.println(expenditureSummarizerMock.getExpenditureSum(Currency.EUR));
+        System.out.println(expenditureSummarizerMock.getExpenditureSum(Currency.USD));
+        System.out.println(expenditureSummarizerMock.getExpenditureSum(Currency.EUR));
+    }
 }

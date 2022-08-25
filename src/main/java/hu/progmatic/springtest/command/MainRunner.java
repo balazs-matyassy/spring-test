@@ -20,6 +20,6 @@ public class MainRunner implements CommandLineRunner {
         // CurrencyConverter converter = new CurrencyConverterTestImpl();
 
         double sum = expenditureSummarizer.getExpenditureSum(Currency.HUF);
-        System.out.printf("Összes kiadás: %.2f", sum);
+        System.out.printf("Összes kiadás: %.2f\n", sum);
     }
 }
