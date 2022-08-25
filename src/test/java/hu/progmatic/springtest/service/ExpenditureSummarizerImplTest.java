@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExpenditureSummarizerImplTest {
@@ -43,5 +46,11 @@ class ExpenditureSummarizerImplTest {
         double sum = expenditureSummarizer.getExpenditureSum(Currency.HUF);
 
         assertEquals(100000.0, sum);
+
+        // Hamcrest
+        // https://www.baeldung.com/java-junit-hamcrest-guide
+        // https://www.swtestacademy.com/hamcrest-matchers/
+
+        // assertThat(sum, is(equalTo(100000.0)));
     }
 }
