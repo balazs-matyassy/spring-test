@@ -12,6 +12,7 @@ import org.mockito.MockitoAnnotations;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 class MainRunnerTest {
@@ -65,6 +66,9 @@ class MainRunnerTest {
                 .thenReturn(150000.0);
         when(expenditureSummarizerMock.getExpenditureSum(Currency.EUR))
                 .thenReturn(300.0);
+        // Paramétertől függetlenül 12345.0 lesz a visszatérési érték.
+        // when(expenditureSummarizerMock.getExpenditureSum(any(Currency.class)))
+        //        .thenReturn(12345.0);
 
         // Természetesen továbbra is lehetőség van a konstruktoron keresztül átadni a mock objektumokat
         // függőségként. :)
