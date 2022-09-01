@@ -16,15 +16,10 @@ class ExpenditureSummarizerImplTest {
 
     @Test
     void getExpenditureSum() {
-        ExpenditureStorage expenditureStorage = new ExpenditureStorage() {
-            @Override
-            public List<Expenditure> loadExpenditures() {
-                return List.of(
-                        new Expenditure(LocalDate.now(), Category.LEISURE, Currency.HUF, 50000.0),
-                        new Expenditure(LocalDate.now(), Category.LEISURE, Currency.EUR, 100.0)
-                );
-            }
-        };
+        ExpenditureStorage expenditureStorage = () -> List.of(
+                new Expenditure(LocalDate.now(), Category.LEISURE, Currency.HUF, 50000.0),
+                new Expenditure(LocalDate.now(), Category.LEISURE, Currency.EUR, 100.0)
+        );
 
         CurrencyConverter currencyConverter = new CurrencyConverter() {
             @Override

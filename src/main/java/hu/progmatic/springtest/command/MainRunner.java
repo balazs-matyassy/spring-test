@@ -5,11 +5,16 @@ import hu.progmatic.springtest.model.Currency;
 import hu.progmatic.springtest.service.ExpenditureSummarizer;
 import org.springframework.boot.CommandLineRunner;
 
+import java.util.function.Consumer;
+
 public class MainRunner implements CommandLineRunner {
     private final ExpenditureSummarizer expenditureSummarizer;
 
-    public MainRunner(ExpenditureSummarizer expenditureSummarizer) {
+    private final Consumer<String> logger;
+
+    public MainRunner(ExpenditureSummarizer expenditureSummarizer, Consumer<String> logger) {
         this.expenditureSummarizer = expenditureSummarizer;
+        this.logger = logger;
     }
 
     @Override
@@ -20,6 +25,7 @@ public class MainRunner implements CommandLineRunner {
         // CurrencyConverter converter = new CurrencyConverterTestImpl();
 
         double sum = expenditureSummarizer.getExpenditureSum(Currency.HUF);
-        System.out.printf("Összes kiadás: %.2f\n", sum);
+        String output = String.format("Összes kiadás: %.2f\n", sum);
+        logger.accept(output);
     }
 }

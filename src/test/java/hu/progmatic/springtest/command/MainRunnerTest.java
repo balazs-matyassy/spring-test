@@ -7,12 +7,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDate;
+import java.util.function.Consumer;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 class MainRunnerTest {
@@ -47,7 +49,9 @@ class MainRunnerTest {
             }
         };
 
-        MainRunner mainRunner = new MainRunner(expenditureSummarizer);
+        // metódus referencia
+        // System.out::println kompatibilis a Consumer<String> funkcionális interfésszel
+        MainRunner mainRunner = new MainRunner(expenditureSummarizer, System.out::println);
         mainRunner.run();
     }
 
@@ -74,9 +78,15 @@ class MainRunnerTest {
         // függőségként. :)
         // Az @InjectMocks annotáció könnyebbé teszi az életünket,
         // illetve működésre jobban hasonlít a springre.
-        MainRunner mainRunner = new MainRunner(expenditureSummarizerMock);
+
+        // Lehet helyette a @Mock annotációt is használni
+        Consumer<String> logger = Mockito.mock(Consumer.class);
+
+        MainRunner mainRunner = new MainRunner(expenditureSummarizerMock, logger);
 
         mainRunner.run();
+
+        verify(logger).accept("Összes kiadás: 10000,00");
 
         // Közvetlenül is "használható" a mock objektum,
         System.out.println(expenditureSummarizerMock.getExpenditureSum(Currency.HUF));
